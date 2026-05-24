@@ -1,0 +1,19 @@
+from flask import Flask, render_template, request, redirect, url_for
+
+app = Flask(__name__)
+
+@app.route("/")    
+def index():
+    return render_template("index.html") 
+
+@app.route("/calculate",methods=["POST"])
+def calculate():
+    
+    P = float(request.form.get("principal"))
+    R = float(request.form.get("rate"))
+    T = float(request.form.get("time"))
+    A = P * (1 + R/100) ** T
+    return render_template("index.html", amount=A)
+
+if __name__ == "__main__":
+    app.run(debug=True)
