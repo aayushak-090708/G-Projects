@@ -6,7 +6,7 @@ app = Flask(__name__)
 def index():
     return render_template("index.html") 
 
-@app.route("/calculate",methods=["POST"])
+@app.route("/calculate",methods=["POST"])  #route for calculating the compound interest
 def calculate():
     
     P = float(request.form.get("principal"))
