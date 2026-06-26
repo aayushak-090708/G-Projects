@@ -1,3 +1,4 @@
+# hello all this is a compound interest calculator web application :)
 from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
