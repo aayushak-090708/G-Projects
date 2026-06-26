@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes App</title>
+</head>
+<body>
+    <h1>Welcome to the Notes App</h1>
+    <p>This is a simple notes application built with Flask.</p>
+    
+    <h2>Add a New Note</h2>
+    <form action="/add_note" method="post">
+        <label for="title">Title:</label><br>
+        <input type="text" id="title" name="title" required><br><br>
+        <label for="content">Content:</label><br>
+        <textarea id="content" name="content" rows="4" cols="50" required></textarea><br><br>
+        <input type="submit" value="Add Note">
+    </form>
+    <br>
+    <h2>My Notes</h2>
+    <ul>
+    {% for note in notes %}
+        <li>
+        <strong>{{ note.title }}</strong>: {{ note.content }}
+        <form action="/delete_note/{{ loop.index0 }}" method="post" style="display:inline;">
+            <button type="submit">Delete</button>
+        </form>
+        </li>
+    {% endfor %}
+    </ul>
+
+
+
+
+</body>
+</html>
